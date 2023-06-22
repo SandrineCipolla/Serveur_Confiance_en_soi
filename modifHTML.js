@@ -16,6 +16,7 @@ async function changePhrase() {
     phrase.innerHTML = JSON.stringify(result)
     console.log("fin de changePhrase")
 }
+changePhrase()
 
 // button.addEventListener("click", changePhrase());
 button.addEventListener("click", changePhrase);

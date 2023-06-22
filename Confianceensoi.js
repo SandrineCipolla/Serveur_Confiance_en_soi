@@ -22,15 +22,25 @@ httpServer.on('request', async (request, response) => {
         // Certainement à remplir pour gérer des autorisations d'accès et de modifications...
         // MAIS POUR L'INSTANT ON S'EN FOUT
     } 
-
+        
+        const choice = Math.floor(Math.random()*2)
+        console.log("choix", choice)
+        
         const citations = await fetch("https://www.affirmations.dev/");
         const result = await citations.json();
         response.setHeader("Content-Type", "application/json")
         // c'est le code d'état HTTP de la réponse
         response.writeHead(200);
-        const addedCitation = citationsPerso.data[0].citation
-        const affichage = JSON.stringify(result.affirmation + " " + addedCitation) 
-        return response.end(affichage)
+        const addedCitation = JSON.stringify(citationsPerso.data[0].citation)
+        const affichage = JSON.stringify(result.affirmation) 
+        
+        if (choice === 0){
+          return response.end(affichage)  
+        }
+        else{
+            return response.end(addedCitation)
+        }
+        // return response.end(affichage)
 });
 
 httpServer.listen(port, host, () => {

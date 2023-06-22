@@ -1,3 +1,4 @@
+
 // GESTION AFFICHAGE DE PHRASES MOTIVANTES !!!! 
 let phrase = document.getElementById('phrase');
 let button = document.getElementById('change')
@@ -21,3 +22,8 @@ changePhrase()
 
 // button.addEventListener("click", changePhrase());
 button.addEventListener("click", changePhrase);
+
+function addNewCitation(){
+    const newCitation = document.getElementById('newCitation').value 
+    
+}

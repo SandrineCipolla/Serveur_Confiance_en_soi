@@ -2,8 +2,9 @@
 const http = require('http');
 const citationsPerso = require('./citations.json');
 console.log(citationsPerso.data[0].citation);
-// serveur sur localhost
 
+
+// serveur sur localhost
 const host = 'localhost';
 // permettre de trouver son serveur préciser 8000
 const port = 8000;
@@ -27,48 +28,13 @@ httpServer.on('request', async (request, response) => {
         response.setHeader("Content-Type", "application/json")
         // c'est le code d'état HTTP de la réponse
         response.writeHead(200);
-        return response.end(JSON.stringify(result.affirmation));
-        // return response.end();
-   
-
+        const addedCitation = citationsPerso.data[0].citation
+        const affichage = JSON.stringify(result.affirmation + " " + addedCitation) 
+        return response.end(affichage)
 });
 
 httpServer.listen(port, host, () => {
     // c'est pour afficher l'url du serveur au moment de son lancement
     console.log(`Web server is running on http://${host}:${port}`);
 });
-// const host = 'localhost';
-// // permettre de trouver son serveur préciser 8000
-// const port = 8000;
-// // fetcher l'API : request et result 
-// const requestListener = async function (req, res) {
-//     const citations = await fetch("https://www.affirmations.dev/");
-//     //////TEST///////
-//     // const citations = await fetch(citationsPerso);
-//     // retour de l'API en format JSON
-//     const result = await citations.json();
 
-//     // setheader précise le type de contenu dans le résultat et définit l'en-tête
-    
-//     res.setHeader("Content-Type", "application/json")
-//     // c'est le code d'état HTTP de la réponse
-//     res.writeHead(200);
-//     // console.log(result, "coucou")
-//     // console.log(citations)
-//     // console.log(req)
-//     // stringify sert à convertir JSON en STRING
-//     res.end(JSON.stringify(result.affirmation));
-//     // res.end(JSON.stringify(citationsPerso.data[0].citation));
-// };
-// // création du serveur
-// const server = http.createServer(requestListener);
-// server.listen(port, host, () => {
-//     // c'est pour afficher l'url du serveur au moment de son lancement
-//     console.log(`Web server is running on http://${host}:${port}`);
-// });
-
-
-
-// console.log("serveur",server);
-
-// });

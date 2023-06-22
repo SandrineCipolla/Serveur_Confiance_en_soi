@@ -18,5 +18,6 @@ async function changePhrase() {
 }
 changePhrase()
 
+
 // button.addEventListener("click", changePhrase());
 button.addEventListener("click", changePhrase);
